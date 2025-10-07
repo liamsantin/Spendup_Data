@@ -51,4 +51,31 @@ create table Transaction (
 insert into Transaction (id, user_id, payment_method_id, activity_domain_id, amount, description, date)
 VALUES (null, 2, 1,1, 100.20, 'paiement test', now());
 
+create table Objectif (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(255)
+)
+
 select * from Transaction;
+
+delete from Transaction where id = 26 and user_id = 3;
+
+SELECT EXISTS(
+    SELECT 1
+    FROM Transaction
+    WHERE id = 23
+      AND user_id = 3
+) AS IsAuthorized;
+
+SELECT
+    CASE
+        WHEN t.id IS NULL THEN 'NOT_FOUND'
+        WHEN t.user_id = 1 THEN 'AUTHORIZED'
+        ELSE 'FORBIDDEN'
+    END AS AccessStatus
+FROM Transaction t
+WHERE t.id = 23;
+
+select * from PaymentMethod;

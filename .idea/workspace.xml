@@ -4,9 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="init project">
-      <change afterPath="$PROJECT_DIR$/Start/start.sql" afterDir="false" />
+    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Start/accounts/accounts.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/budget/budget.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/objectifs/objectifs.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/procedure.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/structure.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=achat_voiture.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=animaux.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=fond_urgence.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=logement.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=revenus_divers.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=vac.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_classic.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_divers.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_intern_transfert.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_link_objectif.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Start/vue.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Start/start.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Start/start.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,19 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/lsant"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lsant&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="" />
@@ -49,6 +67,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init project" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
