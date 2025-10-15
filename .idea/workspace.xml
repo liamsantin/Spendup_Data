@@ -4,35 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new structure of database">
-      <change afterPath="$PROJECT_DIR$/Tables/Biens/select-biens.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tables/Budgets/insert-budgets.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tables/Transactions/insert-transactions.sql" afterDir="false" />
+    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update structure of project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/account-select.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/accounts/accounts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/Accounts/select-accounts.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/budget/budget.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/Budgets/select-budget.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/objectifs/objectifs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/procedure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Procedures/procedure.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/start.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/structure.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=achat_voiture.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=animaux.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=fond_urgence.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=logement.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=revenus_divers.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/objectif=vac.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/transaction.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/transaction_classic.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/transaction_divers.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/transaction_intern_transfert.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/transactions/transaction_link_objectif.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Transactions/transaction-select.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_table/create table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/insert.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/structure.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/vue.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/vue.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +68,7 @@
     <MESSAGE value="new tables Biens + TypeBiens" />
     <MESSAGE value="update all" />
     <MESSAGE value="new structure of database" />
-    <option name="LAST_COMMIT_MESSAGE" value="new structure of database" />
+    <MESSAGE value="update structure of project" />
+    <option name="LAST_COMMIT_MESSAGE" value="update structure of project" />
   </component>
 </project>
