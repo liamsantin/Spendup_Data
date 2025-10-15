@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Vue/use-vue.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Vue/vue.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/structure.sql" dialect="MySQL" />
   </component>

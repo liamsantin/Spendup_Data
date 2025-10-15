@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update structure of project">
+      <change afterPath="$PROJECT_DIR$/Vue/use-vue.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/gestion_financiere.0A5QKA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/gestion_financiere.0A5QKA.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/vue.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/vue.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

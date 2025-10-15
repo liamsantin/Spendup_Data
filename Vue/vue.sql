@@ -216,43 +216,16 @@ GROUP BY
 ORDER BY taux_utilisation DESC;
 
 
-select * from v_budget_vs_depenses;
-
-SELECT *
-FROM v_solde_par_compte
-WHERE user_id = 1;
-
--- voir le résumé global de l'année
-SELECT * FROM v_resume_annuel;
-
--- comparer revenus/dépenses sur plusieurs années
-SELECT annee, total_revenus, total_depenses, solde_net
-FROM v_resume_annuel
-WHERE utilisateur = 'Liam Santin'
-ORDER BY annee;
-
--- Moyenne de revenu par an
-SELECT utilisateur, ROUND(AVG(total_revenus), 2) AS moyenne_revenus
-FROM v_resume_annuel
-GROUP BY utilisateur;
-
-SELECT * FROM v_resume_par_budget;
-
--- Budget dépassé
-SELECT *
-FROM v_resume_par_budget
-WHERE taux_utilisation > 100;
-
--- Voir les budgets encore valides pour le mois en cours
-SELECT *
-FROM v_resume_par_budget
-WHERE CURDATE() BETWEEN start_date AND end_date;
 
 
--- Classement des budgets du plus utilisé au moins utilisé
-SELECT utilisateur, budget, taux_utilisation
-FROM v_resume_par_budget
-ORDER BY taux_utilisation DESC;
+
+
+
+
+
+
+
+
 
 
 CREATE OR REPLACE VIEW v_biens_resume AS
@@ -278,5 +251,5 @@ INNER JOIN users u ON u.id = b.user_id
 INNER JOIN type_biens tb ON tb.id = b.type_bien_id
 ORDER BY b.updated_at DESC;
 
-select * from v_biens_resume;
+
 
