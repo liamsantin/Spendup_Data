@@ -48,6 +48,7 @@ CREATE TABLE categories (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+ALTER TABLE categories ADD COLUMN type ENUM('income', 'expense', 'other') DEFAULT 'expense';
 
 CREATE TABLE statut_objectifs (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -77,6 +78,9 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+ALTER TABLE users
+CHANGE birthday birthdate TEXT NOT NULL;
+select * from users;
 
 CREATE TABLE parameters (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -101,6 +105,12 @@ CREATE TABLE accounts (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+SELECT id FROM Accounts WHERE user_id = 2 LIMIT 1;
+ SELECT t.*
+        FROM transactions t
+        INNER JOIN accounts a ON a.id = t.account_id
+        WHERE a.user_id = 1
+        ORDER BY t.created_at DESC;
 
 CREATE TABLE budgets (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -115,6 +125,16 @@ CREATE TABLE budgets (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+ALTER TABLE budgets MODIFY category_id BIGINT NOT NULL;
+ALTER TABLE budgets
+ADD CONSTRAINT fk_budgets_category
+FOREIGN KEY (category_id)
+REFERENCES categories(id)
+ON DELETE CASCADE;
+ALTER TABLE budgets
+ADD COLUMN category_id BIGINT NOT NULL,
+ADD FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE;
+
 
 CREATE TABLE objectifs (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -178,6 +198,71 @@ CREATE TABLE transactions (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+SELECT t.*
+FROM transactions t
+INNER JOIN accounts a ON a.id = t.account_id
+WHERE a.user_id = 2 and t.id = 33
+ORDER BY t.created_at DESC;
+SELECT COUNT(*)
+        FROM Transactions t
+        INNER JOIN Accounts a ON a.id = t.account_id
+        WHERE t.id = 43 AND a.user_id = 3 ;
+SELECT COUNT(*)
+        FROM Accounts
+        WHERE id = 6 AND user_id = 2;
+
+CREATE TABLE notifications (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  type VARCHAR(50) NOT NULL,              -- ex: 'budget', 'objectif', 'transaction'
+  message TEXT NOT NULL,                  -- contenu de l’alerte lisible par l’utilisateur
+  related_id BIGINT NULL,                 -- id de l’élément concerné (ex: budget_id, objectif_id)
+  is_read BOOLEAN DEFAULT FALSE,          -- lu / non lu
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_notif_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE type_biens (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50) NOT NULL UNIQUE,
+  description TEXT NULL,
+  icone VARCHAR(100) NULL,        -- pour un affichage frontend (ex: “fa-car”, “fa-home”)
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE biens (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  type_bien_id BIGINT NOT NULL,
+  nom VARCHAR(100) NOT NULL,
+  description TEXT NULL,
+  valeur_achat DECIMAL(12,2) DEFAULT 0,
+  valeur_actuelle DECIMAL(12,2) DEFAULT 0,
+  date_acquisition DATE NULL,
+  date_estimation DATE NULL,
+  localisation VARCHAR(255) NULL,
+  source_estimation VARCHAR(100) NULL,  -- ex: "Argus Auto", "Banque", "Site immo"
+  revenu_annuel DECIMAL(12,2) DEFAULT 0,  -- ex: loyers, dividendes
+  cout_annuel DECIMAL(12,2) DEFAULT 0,    -- ex: assurance, entretien, impôts
+  objectif_id BIGINT NULL,                -- relie à un objectif ("remplacer la voiture")
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_bien_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  CONSTRAINT fk_type_bien FOREIGN KEY (type_bien_id) REFERENCES type_biens(id) ON DELETE CASCADE,
+  CONSTRAINT fk_bien_objectif FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE SET NULL
+);
+
+ALTER TABLE transactions ADD COLUMN bien_id BIGINT NULL AFTER objectif_id;
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transaction_bien FOREIGN KEY (bien_id) REFERENCES biens(id) ON DELETE SET NULL;
+
+
+
+select * from biens;
 
 -- =====================================================================
 --  Données d'exemple
@@ -256,3 +341,6 @@ FOR EACH ROW
   SET NEW.updated_at = CURRENT_TIMESTAMP;
 //
 DELIMITER ;
+
+
+select * from users;

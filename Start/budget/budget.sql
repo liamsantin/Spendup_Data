@@ -17,8 +17,8 @@ INSERT INTO budgets (user_id, name, montant_max, start_date, end_date)
 VALUES (1, 'Divertissement', 300.00, '2025-10-01', '2025-10-31');
 
 -- Budget : Animaux
-INSERT INTO budgets (user_id, name, montant_max, start_date, end_date)
-VALUES (1, 'Animaux', 100.00, '2025-10-01', '2025-10-31');
+INSERT INTO budgets (user_id, category_id, name, montant_max, start_date, end_date)
+VALUES (1, 2, 'Animaux', 100.00, '2025-10-01', '2025-10-31');
 
 select * from budgets;
 
@@ -31,3 +31,21 @@ VALUES
    (SELECT id FROM budgets WHERE name='Santé')),
   ((SELECT id FROM objectifs WHERE name='Vacances d’été 2026'),
    (SELECT id FROM budgets WHERE name='Divertissement'));
+
+SELECT COUNT(*)
+                        FROM budgets
+                        WHERE id = 2 AND user_id = 2;
+
+ALTER TABLE budgets
+MODIFY COLUMN start_date DATE NOT NULL,
+MODIFY COLUMN end_date DATE NOT NULL;
+
+describe budgets;
+ALTER TABLE budgets
+DROP COLUMN category_id;
+
+ALTER TABLE budgets
+ADD COLUMN category_id INT NULL AFTER user_id;
+
+
+describe budgets;

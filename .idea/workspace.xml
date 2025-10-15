@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/Start/accounts/accounts.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/budget/budget.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/objectifs/objectifs.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/procedure.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/structure.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=achat_voiture.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=animaux.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=fond_urgence.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=logement.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=revenus_divers.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/objectif=vac.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_classic.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_divers.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_intern_transfert.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/transactions/transaction_link_objectif.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Start/vue.sql" afterDir="false" />
+    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new tables Biens + TypeBiens">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start/start.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Start/start.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Start/budget/budget.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Start/budget/budget.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Start/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Start/structure.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Start/vue.sql" beforeDir="false" afterPath="$PROJECT_DIR$/vue/vue.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +40,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\_DEV\_DATA\Spendup\vue" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="" />
@@ -68,6 +58,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="new tables Biens + TypeBiens" />
+    <option name="LAST_COMMIT_MESSAGE" value="new tables Biens + TypeBiens" />
   </component>
 </project>
