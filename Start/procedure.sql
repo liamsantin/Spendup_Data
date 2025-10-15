@@ -102,5 +102,105 @@ END;
 //
 DELIMITER ;
 
+DELIMITER //
+
+CREATE  PROCEDURE sp_verifier_depassement_budgets()
+BEGIN
+    DECLARE done INT DEFAULT 0;
+    DECLARE v_user VARCHAR(255);
+    DECLARE v_budget VARCHAR(255);
+    DECLARE v_taux DECIMAL(6,2);
+    DECLARE v_budget_id BIGINT;
+    DECLARE v_user_id BIGINT;
+    DECLARE v_message TEXT;
+
+    -- Curseur : budgets dont le taux d’utilisation dépasse 100 %
+    DECLARE cur CURSOR FOR
+        SELECT utilisateur, budget, taux_utilisation
+        FROM v_resume_par_budget
+        WHERE taux_utilisation > 100;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    OPEN cur;
+
+    read_loop: LOOP
+        FETCH cur INTO v_user, v_budget, v_taux;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Récupère l'identifiant de l'utilisateur
+        SELECT id INTO v_user_id
+        FROM users
+        WHERE name = v_user
+        LIMIT 1;
+
+        -- Récupère l'identifiant du budget
+        SELECT id INTO v_budget_id
+        FROM budgets
+        WHERE name = v_budget
+          AND user_id = v_user_id
+        LIMIT 1;
+
+        -- Construit le message d’alerte
+        SET v_message = CONCAT(
+            '⚠️ Le budget "', v_budget,
+            '" est dépassé à ', ROUND(v_taux, 2), ' %.'
+        );
+
+        -- Vérifie si une notification similaire existe déjà
+        IF NOT EXISTS (
+            SELECT 1
+            FROM notifications
+            WHERE user_id = v_user_id
+              AND type = 'budget'
+              AND related_id = v_budget_id
+              AND message LIKE CONCAT('%', v_budget, '%')
+        ) THEN
+            -- Insère la nouvelle notification
+            INSERT INTO notifications (user_id, type, message, related_id, is_read)
+            VALUES (v_user_id, 'budget', v_message, v_budget_id, FALSE);
+        END IF;
+
+    END LOOP;
+
+    CLOSE cur;
+END;
+//
+
+DELIMITER ;
+
+
 CALL sp_mettre_a_jour_progression_objectifs();
 select * from v_objectifs_progress;
+
+CALL sp_verifier_depassement_budgets();
+SELECT * FROM notifications ORDER BY created_at DESC;
+
+
+DELIMITER //
+
+CREATE TRIGGER trg_update_budget_after_transaction
+AFTER INSERT ON transactions
+FOR EACH ROW
+BEGIN
+    DECLARE v_type VARCHAR(50);
+
+    -- Vérifie le type de transaction
+    SELECT name INTO v_type
+    FROM type_transactions
+    WHERE id = NEW.type_transaction_id;
+
+    -- Si c’est une dépense liée à un budget, on met à jour le montant dépensé
+    IF v_type = 'depense' AND NEW.budget_id IS NOT NULL THEN
+        UPDATE budgets
+        SET spent_amount = COALESCE(spent_amount, 0) + NEW.amount,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = NEW.budget_id;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
