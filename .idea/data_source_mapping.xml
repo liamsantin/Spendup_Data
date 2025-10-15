@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/Procedures/procedure.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Accounts/select-accounts.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Biens/insert-biens.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Biens/select-biens.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Budgets/select-budget.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Categories/insert-categories.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/Vue/vue.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+    <file url="file://$PROJECT_DIR$/structure.sql" value="6aeac60e-e6d2-4dde-bf5d-079ccf70ec25" />
+  </component>
+</project>
