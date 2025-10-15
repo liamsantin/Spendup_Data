@@ -1,1 +1,2 @@
-# Database file of the Personal Gestion Finance
+# Database of Spend Up Application
+

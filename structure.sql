@@ -1,7 +1,6 @@
 -- =====================================================================
 --  Base de données : gestion_financiere
 -- =====================================================================
-
 CREATE DATABASE IF NOT EXISTS gestion_financiere
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE gestion_financiere;
@@ -187,7 +186,7 @@ CREATE TABLE transactions (
 CREATE TABLE notifications (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   user_id BIGINT NOT NULL,
-  type VARCHAR(50) NOT NULL,              -- ex: 'budget', 'objectif', 'transaction'
+  type VARCHAR(50) NOT NULL,              -- ex: 'Budgets', 'objectif', 'transaction'
   message TEXT NOT NULL,                  -- contenu de l’alerte lisible par l’utilisateur
   related_id BIGINT NULL,                 -- id de l’élément concerné (ex: budget_id, objectif_id)
   is_read BOOLEAN DEFAULT FALSE,          -- lu / non lu
@@ -253,7 +252,7 @@ INSERT INTO type_reports (name) VALUES
   ('mensuel'), ('categorie'), ('previsionnel');
 
 -- Utilisateur et paramètres
-INSERT INTO users (email, password_hash, name, phone, birthday)
+INSERT INTO users (email, password_hash, name, phone, birthdate)
 VALUES ('liam@example.com', 'bcrypt$2a$example', 'Liam Santin', '+41 79 000 00 00', '1995-06-15');
 
 INSERT INTO parameters (user_id, theme, langue)

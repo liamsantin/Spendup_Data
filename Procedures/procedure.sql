@@ -136,7 +136,7 @@ BEGIN
         WHERE name = v_user
         LIMIT 1;
 
-        -- Récupère l'identifiant du budget
+        -- Récupère l'identifiant du Budgets
         SELECT id INTO v_budget_id
         FROM budgets
         WHERE name = v_budget
@@ -145,7 +145,7 @@ BEGIN
 
         -- Construit le message d’alerte
         SET v_message = CONCAT(
-            '⚠️ Le budget "', v_budget,
+            '⚠️ Le Budgets "', v_budget,
             '" est dépassé à ', ROUND(v_taux, 2), ' %.'
         );
 
@@ -154,13 +154,13 @@ BEGIN
             SELECT 1
             FROM notifications
             WHERE user_id = v_user_id
-              AND type = 'budget'
+              AND type = 'Budgets'
               AND related_id = v_budget_id
               AND message LIKE CONCAT('%', v_budget, '%')
         ) THEN
             -- Insère la nouvelle notification
             INSERT INTO notifications (user_id, type, message, related_id, is_read)
-            VALUES (v_user_id, 'budget', v_message, v_budget_id, FALSE);
+            VALUES (v_user_id, 'Budgets', v_message, v_budget_id, FALSE);
         END IF;
 
     END LOOP;
@@ -192,7 +192,7 @@ BEGIN
     FROM type_transactions
     WHERE id = NEW.type_transaction_id;
 
-    -- Si c’est une dépense liée à un budget, on met à jour le montant dépensé
+    -- Si c’est une dépense liée à un Budgets, on met à jour le montant dépensé
     IF v_type = 'depense' AND NEW.budget_id IS NOT NULL THEN
         UPDATE budgets
         SET spent_amount = COALESCE(spent_amount, 0) + NEW.amount,

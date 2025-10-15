@@ -1,5 +1,18 @@
 use gestion_financiere;
 
+SELECT t.*
+FROM transactions t
+INNER JOIN accounts a ON a.id = t.account_id
+WHERE a.user_id = 2 and t.id = 33
+ORDER BY t.created_at DESC;
+SELECT COUNT(*)
+        FROM Transactions t
+        INNER JOIN Accounts a ON a.id = t.account_id
+        WHERE t.id = 43 AND a.user_id = 3 ;
+SELECT COUNT(*)
+        FROM Accounts
+        WHERE id = 6 AND user_id = 2;
+
 CALL sp_mettre_a_jour_progression_objectifs();
 CALL sp_generer_rapport_mensuel(1, 10, 2025);
 SELECT * FROM v_dashboard_global;
@@ -164,7 +177,7 @@ SELECT utilisateur, SUM(montant_signe) AS solde_reel
 FROM v_transactions_detaillees
 GROUP BY utilisateur;
 
--- Total dépenses par budget
+-- Total dépenses par Budgets
 SELECT budget, ROUND(SUM(montant_signe), 2) AS total_depense
 FROM v_transactions_detaillees
 WHERE type_transaction = 'depense'

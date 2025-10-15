@@ -36,10 +36,10 @@ LEFT JOIN type_transactions tt ON tt.id = t.type_transaction_id
 GROUP BY a.id, u.id, u.name, a.description, a.amount, a.currency_code, a.created_at, a.updated_at;
 
 -- Compare les budgets planifiés et les dépenses réelles
--- pour chaque budget et utilisateur.
+-- pour chaque Budgets et utilisateur.
 -- Utilité :
 --      Suivre facilement les budgets dépassés ou presque atteints.
---      Parfait pour un “thermomètre de budget” dans une interface graphique.
+--      Parfait pour un “thermomètre de Budgets” dans une interface graphique.
 CREATE OR REPLACE VIEW v_budget_vs_depenses AS
 SELECT
     b.id                     AS budget_id,
@@ -176,7 +176,7 @@ SELECT
     b.name AS budget,
     b.montant_max AS montant_prevu,
 
-    -- Total des dépenses liées à ce budget
+    -- Total des dépenses liées à ce Budgets
     ROUND(SUM(
         CASE
             WHEN tt.name = 'depense' THEN t.amount
