@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new views and new routines">
+      <change afterPath="$PROJECT_DIR$/Tables/Category/category.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procedures/procedure.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Accounts/select-accounts.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Biens/insert-biens.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Biens/select-biens.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Budgets/insert-budgets.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Budgets/select-budget.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Categories/insert-categories.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Transactions/insert-transactions.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/use-vue.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/vue.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/country/insert country.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/structure.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="release/1.1.0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

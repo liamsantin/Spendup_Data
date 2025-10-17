@@ -1,3 +1,4 @@
+-- drop database spendup;
 CREATE DATABASE IF NOT EXISTS spendup CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE spendup;
@@ -231,44 +232,102 @@ CREATE TABLE Notification (
     FOREIGN KEY (objectif_id) REFERENCES Objectif(id)
 );
 
--- ==========================
--- DATA EXEMPLE
--- ==========================
--- Types
+
+
+
+-- ================================
+-- TYPES
+-- ================================
 INSERT INTO TypeProperty (name) VALUES ('Véhicule'), ('Immobilier');
-INSERT INTO TypeCategory (name) VALUES ('Transport'), ('Carburant'), ('Alimentation');
+
+INSERT INTO TypeCategory (name) VALUES ('Revenu'), ('Dépense'), ('Autre');
+
 INSERT INTO TypeTransaction (name) VALUES ('Revenu'), ('Dépense'), ('Transfert interne');
-INSERT INTO TypeAccount (name) VALUES ('Courant'), ('Épargne'), ('Crypto'), ('investissement');
+INSERT INTO TypeAccount (name) VALUES ('Courant'), ('Épargne'), ('Crypto');
 INSERT INTO StatutTransaction (name) VALUES ('Confirmé'), ('En attente'), ('Annulé');
 INSERT INTO StatutObjectif (name) VALUES ('En cours'), ('Abandonné'), ('Atteint');
 INSERT INTO TypeReport (name) VALUES ('Mensuel'), ('Prévisionnel');
 
--- Utilisateurs
+-- ================================
+-- UTILISATEUR
+-- ================================
 INSERT INTO User (email, password, name, phone, birthdate)
 VALUES ('liam@example.com', 'hash123', 'Liam Santin', '0791234567', '1995-04-12');
 
 INSERT INTO Parameter (theme, langue, user_id)
 VALUES ('dark', 'fr', 1);
 
--- Comptes et moyens de paiement
+-- ================================
+-- COMPTES ET MOYENS DE PAIEMENT
+-- ================================
 INSERT INTO PaymentMethod (name) VALUES ('Cash'), ('Carte bancaire'), ('Virement');
 INSERT INTO Account (name, balance, type_account_id)
 VALUES ('Compte Principal', 2500.00, 1), ('Épargne Crypto', 1000.00, 3);
 
--- Catégories / Budgets
-INSERT INTO Category (name, type_category_id) VALUES ('Transport', 1), ('Courses', 3);
+-- ================================
+-- CATÉGORIES
+-- ================================
+
+-- 💸 Dépenses (type_category_id = 2)
+INSERT INTO Category (name, type_category_id) VALUES
+('Alimentation', 2),
+('Logement', 2),
+('Transport', 2),
+('Santé', 2),
+('Éducation', 2),
+('Divertissement', 2),
+('Vacances', 2),
+('Habillement', 2),
+('Communication', 2),
+('Assurance', 2),
+('Enfants', 2),
+('Animaux', 2),
+('Impôts', 2),
+('Épargne', 2),
+('Dons', 2),
+('Autres dépenses', 2);
+
+-- 💰 Revenus (type_category_id = 1)
+INSERT INTO Category (name, type_category_id) VALUES
+('Salaire', 1),
+('Prime', 1),
+('Indemnités', 1),
+('Pensions', 1),
+('Revenus locatifs', 1),
+('Dividendes', 1),
+('Intérêts bancaires', 1),
+('Vente', 1),
+('Autres revenus', 1);
+
+-- 🏦 Spéciales / mixtes (type_category_id = 3)
+INSERT INTO Category (name, type_category_id) VALUES
+('Transfert interne', 3),
+('Carte de crédit', 3),
+('Remboursement', 3),
+('Investissement', 3),
+('Autre', 3);
+
+-- ================================
+-- BUDGETS
+-- ================================
 INSERT INTO Budget (name, max_amount, start_date, end_date, spent_amount, user_id)
 VALUES ('Budget Octobre', 2000.00, '2025-10-01', '2025-10-31', 0.00, 1);
 
--- Transactions
+-- ================================
+-- TRANSACTIONS
+-- ================================
 INSERT INTO Transaction (name, amount, description, user_id, budget_id, category_id, statut_transaction_id, type_transaction_id, payment_method_id, account_id)
-VALUES ('Achat essence', 80.00, 'Plein de carburant', 1, 1, 1, 1, 2, 2, 1),
-       ('Salaire', 3500.00, 'Revenu mensuel', 1, 1, NULL, 1, 1, 3, 1);
+VALUES ('Achat essence', 80.00, 'Plein de carburant', 1, 1, 3, 1, 2, 2, 1),
+       ('Salaire', 3500.00, 'Revenu mensuel', 1, 1, 17, 1, 1, 3, 1);
 
--- Objectifs
+-- ================================
+-- OBJECTIFS
+-- ================================
 INSERT INTO Objectif (name, cible, progression, start_date, end_date, statut_objectif_id, user_id)
 VALUES ('Économiser 1000 CHF', 1000.00, 300.00, '2025-01-01', '2025-12-31', 1, 1);
 
--- Notifications
+-- ================================
+-- NOTIFICATIONS
+-- ================================
 INSERT INTO Notification (type, message, related_id, is_read, budget_id)
 VALUES ('Budget', 'Vous avez dépassé 80% de votre budget', 1, FALSE, 1);
