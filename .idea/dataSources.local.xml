@@ -13,11 +13,11 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="spendup" />
             <name qname="@" />
             <name qname="finance" />
             <name qname="salut" />
             <name qname="gestion_financiere" />
-            <name qname="spendup" />
           </node>
         </introspection-scope>
       </schema-mapping>

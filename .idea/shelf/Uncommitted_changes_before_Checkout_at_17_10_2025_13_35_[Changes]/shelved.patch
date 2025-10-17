@@ -1,0 +1,50 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1377c3bc-3587-4973-8c18-5f034ce6a135\" name=\"Changes\" comment=\"new views and new routines\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/data_source_mapping.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/data_source_mapping.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/sqldialects.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/sqldialects.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Procedures/procedure.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Accounts/select-accounts.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Biens/insert-biens.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Biens/select-biens.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Budgets/insert-budgets.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Budgets/select-budget.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Categories/insert-categories.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Transactions/insert-transactions.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tables/Transactions/select-transactions.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Vue/use-vue.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Vue/vue.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/country/insert country.sql\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/structure.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/structure.sql\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"33YveAEk1kx2ZFYqdw89nyuUUXQ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/lsant&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;mysql&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\_DEV\\_DATA\\Spendup\\Procedures\" />\r\n      <recent name=\"D:\\_DEV\\_DATA\\Spendup\\Tables\\Biens\" />\r\n      <recent name=\"D:\\_DEV\\_DATA\\Spendup\\Tables\\Categories\" />\r\n      <recent name=\"D:\\_DEV\\_DATA\\Spendup\\Tables\\Notifications\" />\r\n      <recent name=\"D:\\_DEV\\_DATA\\Spendup\\Tables\\Objectifs\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1377c3bc-3587-4973-8c18-5f034ce6a135\" name=\"Changes\" comment=\"\" />\r\n      <created>1759506923336</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1759506923336</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"init project\" />\r\n    <MESSAGE value=\"update\" />\r\n    <MESSAGE value=\"new tables Biens + TypeBiens\" />\r\n    <MESSAGE value=\"update all\" />\r\n    <MESSAGE value=\"new structure of database\" />\r\n    <MESSAGE value=\"update structure of project\" />\r\n    <MESSAGE value=\"new views and new routines\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"new views and new routines\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b1308c88117b6da693662f41916beb0a99b44c4f)
++++ b/.idea/workspace.xml	(date 1760700898312)
+@@ -4,28 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new views and new routines">
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
++    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new database">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Procedures/procedure.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Accounts/select-accounts.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Biens/insert-biens.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Biens/select-biens.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Budgets/insert-budgets.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Budgets/select-budget.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Categories/insert-categories.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Transactions/insert-transactions.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Vue/use-vue.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Vue/vue.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/country/insert country.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/structure.sql" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -89,6 +69,7 @@
+     <MESSAGE value="new structure of database" />
+     <MESSAGE value="update structure of project" />
+     <MESSAGE value="new views and new routines" />
+-    <option name="LAST_COMMIT_MESSAGE" value="new views and new routines" />
++    <MESSAGE value="new database" />
++    <option name="LAST_COMMIT_MESSAGE" value="new database" />
+   </component>
+ </project>
+\ No newline at end of file
