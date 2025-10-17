@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update structure of project">
-      <change afterPath="$PROJECT_DIR$/Vue/use-vue.sql" afterDir="false" />
+    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new views and new routines">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/gestion_financiere.0A5QKA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/gestion_financiere.0A5QKA.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/vue.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/vue.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procedures/procedure.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Accounts/select-accounts.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Biens/insert-biens.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Biens/select-biens.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Budgets/insert-budgets.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Budgets/select-budget.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Categories/insert-categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Notifications/insert-notifications.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Objectifs/insert-objectifs.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Transactions/insert-transactions.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/Transactions/select-transactions.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/use-vue.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/vue.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/country/insert country.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/structure.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,20 +48,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/lsant"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lsant&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\_DEV\_DATA\Spendup\Procedures" />
@@ -74,6 +88,7 @@
     <MESSAGE value="update all" />
     <MESSAGE value="new structure of database" />
     <MESSAGE value="update structure of project" />
-    <option name="LAST_COMMIT_MESSAGE" value="update structure of project" />
+    <MESSAGE value="new views and new routines" />
+    <option name="LAST_COMMIT_MESSAGE" value="new views and new routines" />
   </component>
 </project>

@@ -1,312 +1,274 @@
--- =====================================================================
---  Base de données : gestion_financiere
--- =====================================================================
--- DROP DATABASE gestion_financiere;
-CREATE DATABASE IF NOT EXISTS gestion_financiere
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE gestion_financiere;
+CREATE DATABASE IF NOT EXISTS spendup CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- Remarque : on fera un TRIGGER par table (MySQL ne permet pas un trigger global)
+USE spendup;
 
--- =====================================================================
---  Tables de référence
--- =====================================================================
+-- ==========================
+-- TABLES DE TYPE / STATUT
+-- ==========================
 
--- Parameters ------------------------------------------
-CREATE TABLE type_accounts (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO type_accounts (name) VALUES
-  ('courant'), ('epargne'), ('investissement'), ('crypto');
-
--- Type Transactions ------------------------------------------
-CREATE TABLE type_transactions (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO type_transactions (name) VALUES
-  ('revenu'), ('depense'), ('transfert_interne');
-
--- Payments Methods ------------------------------------------
-CREATE TABLE payment_methods (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO payment_methods (name) VALUES
-  ('cash'), ('carte_bancaire'), ('virement');
-
--- Recurrence Transactions --------------------------------------
-CREATE TABLE recurrence_transactions (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE,
-  interval_value INT DEFAULT 1,
-  next_date DATE NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO recurrence_transactions (name, interval_value) VALUES
-  ('none', 1), ('monthly', 1), ('weekly', 1);
-
--- Catégory ----------------------------------------------
-CREATE TABLE categories (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE,
-  type ENUM('income', 'expense', 'other') DEFAULT 'expense',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO categories (name) VALUES
-  ('Alimentation'), ('Transport'), ('Carburant'), ('Loisirs'), ('Salaire');
-
--- Status Objectifs ------------------------------------------
-CREATE TABLE statut_objectifs (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(60) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO statut_objectifs (name) VALUES
-  ('en_cours'), ('atteint'), ('abandonne');
-
--- Type Reports ------------------------------------------
-CREATE TABLE type_reports (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(60) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO type_reports (name) VALUES
-  ('mensuel'), ('categorie'), ('previsionnel');
-
--- =====================================================================
---  Tables principales
--- =====================================================================
-
--- Users ------------------------------------------
-CREATE TABLE users (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  password TEXT NOT NULL,
-  name VARCHAR(150) NOT NULL,
-  phone VARCHAR(40),
-  birthdate DATE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO users (email, password, name, phone, birthdate)
-VALUES ('liam@example.com', 'bcrypt$2a$example', 'Liam Santin', '+41 79 000 00 00', '1995-06-15');
-
-
--- Parameters ------------------------------------------
-CREATE TABLE parameters (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  theme INT DEFAULT 0,
-  langue VARCHAR(5) DEFAULT 'fr',
-  user_id BIGINT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO parameters (user_id, theme, langue)
-VALUES (1, 1, 'fr');
-
--- Accounts ------------------------------------------
-CREATE TABLE accounts (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  type_account_id BIGINT NOT NULL,
-  description TEXT,
-  amount DECIMAL(12,2) DEFAULT 0,
-  currency_code CHAR(3) DEFAULT 'CHF',
-  is_archived BOOLEAN DEFAULT FALSE,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  FOREIGN KEY (type_account_id) REFERENCES type_accounts(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO accounts (user_id, type_account_id, description, amount, currency_code)
-VALUES
-  (1, 1, 'Compte courant UBS', 2500.00, 'CHF'),
-  (1, 2, 'Compte épargne Voyage', 3000.00, 'CHF');
-
--- Budgets ------------------------------------------
-CREATE TABLE budgets (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  category_id BIGINT NOT NULL,
-  name VARCHAR(150) NOT NULL,
-  montant_max DECIMAL(12,2) NOT NULL,
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL,
-  spent_amount DECIMAL(12,2) DEFAULT 0,
-  is_archived BOOLEAN DEFAULT FALSE,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO budgets (user_id, category_id, name, montant_max, start_date, end_date)
-VALUES
-  (1, 2, 'Budget Alimentaire', 600.00, '2025-10-01', '2025-10-31'),
-  (1, 2, 'Loisirs', 200.00, '2025-10-01', '2025-10-31');
-
--- Objectifs ------------------------------------------
-CREATE TABLE objectifs (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  statut_objectif_id BIGINT NOT NULL,
-  name VARCHAR(150) NOT NULL,
-  montant_cible DECIMAL(12,2) NOT NULL,
-  progression DECIMAL(5,2) DEFAULT 0,
-  start_date DATE NOT NULL,
-  end_date DATE NULL,
-  is_archived BOOLEAN DEFAULT FALSE,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  FOREIGN KEY (statut_objectif_id) REFERENCES statut_objectifs(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO objectifs (user_id, statut_objectif_id, name, montant_cible, progression, start_date)
-VALUES
-  (1, 1, 'Voyage au Japon', 5000.00, 30.00, '2025-01-01');
-
--- Objectif Budget ------------------------------------------
-CREATE TABLE objectif_budget (
-  objectif_id BIGINT NOT NULL,
-  budget_id BIGINT NOT NULL,
-  PRIMARY KEY (objectif_id, budget_id),
-  FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE,
-  FOREIGN KEY (budget_id) REFERENCES budgets(id) ON DELETE CASCADE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO objectif_budget (objectif_id, budget_id)
-VALUES (1, 2);
-
--- Reports ------------------------------------------
-CREATE TABLE reports (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  type_report_id BIGINT NOT NULL,
-  name VARCHAR(160) NOT NULL,
-  periode_debut DATE NOT NULL,
-  periode_fin DATE NOT NULL,
-  data_json JSON,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  FOREIGN KEY (type_report_id) REFERENCES type_reports(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO reports (user_id, type_report_id, name, periode_debut, periode_fin, data_json)
-VALUES
-  (1, 1, 'Rapport Mensuel Octobre 2025', '2025-10-01', '2025-10-31',
-   JSON_OBJECT('note', 'Aperçu des dépenses et revenus du mois'));
-
--- Type Biens ---------------------------------------------
-CREATE TABLE type_biens (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(50) NOT NULL UNIQUE,
-  description TEXT NULL,
-  icone VARCHAR(100) NULL,        -- pour un affichage frontend (ex: “fa-car”, “fa-home”)
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO type_biens (nom, description, icone) VALUES
-('vehicule', 'Voitures, motos, vélos, etc.', 'fa-car'),
-('immobilier', 'Maisons, appartements, terrains', 'fa-home'),
-('investissement', 'Actions, cryptos, fonds, assurances-vie', 'fa-chart-line'),
-('objet', 'Objets de valeur, matériel électronique, bijoux', 'fa-gem'),
-('autre', 'Autres types d’actifs divers', 'fa-box');
-
--- Biens --------------------------------------------------------------------
-CREATE TABLE biens (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  type_bien_id BIGINT NOT NULL,
-  nom VARCHAR(100) NOT NULL,
-  description TEXT NULL,
-  valeur_achat DECIMAL(12,2) DEFAULT 0,
-  valeur_actuelle DECIMAL(12,2) DEFAULT 0,
-  date_acquisition DATE NULL,
-  date_estimation DATE NULL,
-  localisation VARCHAR(255) NULL,
-  source_estimation VARCHAR(100) NULL,  -- ex: "Argus Auto", "Banque", "Site immo"
-  revenu_annuel DECIMAL(12,2) DEFAULT 0,  -- ex: loyers, dividendes
-  cout_annuel DECIMAL(12,2) DEFAULT 0,    -- ex: assurance, entretien, impôts
-  objectif_id BIGINT NULL,                -- relie à un objectif ("remplacer la voiture")
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT fk_bien_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-  CONSTRAINT fk_type_bien FOREIGN KEY (type_bien_id) REFERENCES type_biens(id) ON DELETE CASCADE,
-  CONSTRAINT fk_bien_objectif FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE SET NULL
-);
-INSERT INTO biens (user_id, type_bien_id, nom, description, valeur_achat, valeur_actuelle, date_acquisition, cout_annuel)
-VALUES
-(1, (SELECT id FROM type_biens WHERE nom = 'vehicule'), 'Toyota Yaris 2020', 'Voiture principale, essence', 15000.00, 12000.00, '2020-06-10', 1200.00);
-
--- Transactions ------------------------------------------
-CREATE TABLE transactions (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  account_id BIGINT NOT NULL,
-  type_transaction_id BIGINT NOT NULL,
-  amount DECIMAL(12,2) NOT NULL,
-  description TEXT,
-  status VARCHAR(20) DEFAULT 'confirmed',
-  budget_id BIGINT NULL,
-  objectif_id BIGINT NULL,
-  bien_id BIGINT NULL,
-  category_id BIGINT NULL,
-  payment_method_id BIGINT NULL,
-  recurrence_transaction_id BIGINT NULL,
-  FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
-  FOREIGN KEY (type_transaction_id) REFERENCES type_transactions(id),
-  FOREIGN KEY (budget_id) REFERENCES budgets(id) ON DELETE SET NULL,
-  FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE SET NULL,
-  FOREIGN KEY (bien_id) REFERENCES biens(id) ON DELETE SET NULL,
-  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
-  FOREIGN KEY (payment_method_id) REFERENCES payment_methods(id) ON DELETE SET NULL,
-  FOREIGN KEY (recurrence_transaction_id) REFERENCES recurrence_transactions(id) ON DELETE SET NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO transactions (account_id, type_transaction_id, amount, description, status, category_id, payment_method_id)
-VALUES
-  (1, 1, 4200.00, 'Salaire mensuel', 'confirmed', 5, 3),
-  (1, 2, 92.40, 'Courses Migros', 'confirmed', 1, 2),
-  (1, 2, 65.30, 'Carburant station Shell', 'confirmed', 3, 2),
-  (1, 3, 500.00, 'Virement vers épargne', 'confirmed', NULL, 3),
-  (2, 1, 500.00, 'Alimentation objectif Japon', 'confirmed', NULL, 3);
-
--- Notifications ------------------------------------------
-CREATE TABLE notifications (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
-  type VARCHAR(50) NOT NULL,              -- ex: 'Budgets', 'objectif', 'transaction'
-  message TEXT NOT NULL,                  -- contenu de l’alerte lisible par l’utilisateur
-  related_id BIGINT NULL,                 -- id de l’élément concerné (ex: budget_id, objectif_id)
-  is_read BOOLEAN DEFAULT FALSE,          -- lu / non lu
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT fk_notif_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+CREATE TABLE TypeProperty (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- ---------------------------------------------------------------------
---  Fonction utilitaire : mise à jour automatique du champ updated_at
--- ---------------------------------------------------------------------
-DELIMITER //
-CREATE TRIGGER before_update_timestamp
-BEFORE UPDATE ON users
-FOR EACH ROW
-  SET NEW.updated_at = CURRENT_TIMESTAMP;
-//
-DELIMITER ;
+CREATE TABLE TypeReport (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
+CREATE TABLE TypeCategory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
-select * from users;
+CREATE TABLE TypeTransaction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE TypeAccount (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE StatutObjectif (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE StatutTransaction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- ==========================
+-- TABLES UTILISATEUR ET PARAMÈTRES
+-- ==========================
+
+CREATE TABLE User (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(30),
+    birthdate DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Parameter (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    theme VARCHAR(50) NOT NULL,
+    langue VARCHAR(10) NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+-- ==========================
+-- TABLES DE COMPTES ET PAIEMENTS
+-- ==========================
+
+CREATE TABLE PaymentMethod (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Account (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    balance DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    currency_code CHAR(3) NOT NULL DEFAULT 'CHF',
+    type_account_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (type_account_id) REFERENCES TypeAccount(id)
+);
+
+-- ==========================
+-- TABLES DE BASE BUDGÉTAIRE
+-- ==========================
+
+CREATE TABLE Category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type_category_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (type_category_id) REFERENCES TypeCategory(id)
+);
+
+CREATE TABLE Property (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    valeur DECIMAL(10,2),
+    date_acquisition DATE,
+    date_estimation DATE,
+    revenu_annuel DECIMAL(10,2),
+    cout_annuel DECIMAL(10,2),
+    type_property_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (type_property_id) REFERENCES TypeProperty(id)
+);
+
+CREATE TABLE Budget (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    max_amount DECIMAL(10,2),
+    start_date DATE,
+    end_date DATE,
+    spent_amount DECIMAL(10,2),
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+-- ==========================
+-- TABLES TRANSACTIONS
+-- ==========================
+
+CREATE TABLE Transaction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    description TEXT,
+    user_id INT NOT NULL,
+    budget_id INT,
+    category_id INT,
+    statut_transaction_id INT NOT NULL,
+    type_transaction_id INT NOT NULL,
+    payment_method_id INT,
+    account_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(id),
+    FOREIGN KEY (budget_id) REFERENCES Budget(id),
+    FOREIGN KEY (category_id) REFERENCES Category(id),
+    FOREIGN KEY (statut_transaction_id) REFERENCES StatutTransaction(id),
+    FOREIGN KEY (type_transaction_id) REFERENCES TypeTransaction(id),
+    FOREIGN KEY (payment_method_id) REFERENCES PaymentMethod(id),
+    FOREIGN KEY (account_id) REFERENCES Account(id)
+);
+
+CREATE TABLE RecurrentTransaction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    intervale INT NOT NULL,
+    nextDate DATE,
+    transaction_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (transaction_id) REFERENCES Transaction(id)
+);
+
+-- ==========================
+-- TABLES RAPPORTS / OBJECTIFS
+-- ==========================
+
+CREATE TABLE Report (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    data JSON,
+    type_report_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (type_report_id) REFERENCES TypeReport(id),
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE Objectif (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    cible DECIMAL(10,2),
+    progression DECIMAL(10,2),
+    start_date DATE,
+    end_date DATE,
+    statut_objectif_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (statut_objectif_id) REFERENCES StatutObjectif(id),
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+-- ==========================
+-- TABLE NOTIFICATIONS
+-- ==========================
+
+CREATE TABLE Notification (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50) NOT NULL,
+    message TEXT NOT NULL,
+    related_id INT,
+    is_read BOOLEAN DEFAULT FALSE,
+    budget_id INT,
+    objectif_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (budget_id) REFERENCES Budget(id),
+    FOREIGN KEY (objectif_id) REFERENCES Objectif(id)
+);
+
+-- ==========================
+-- DATA EXEMPLE
+-- ==========================
+-- Types
+INSERT INTO TypeProperty (name) VALUES ('Véhicule'), ('Immobilier');
+INSERT INTO TypeCategory (name) VALUES ('Transport'), ('Carburant'), ('Alimentation');
+INSERT INTO TypeTransaction (name) VALUES ('Revenu'), ('Dépense'), ('Transfert interne');
+INSERT INTO TypeAccount (name) VALUES ('Courant'), ('Épargne'), ('Crypto'), ('investissement');
+INSERT INTO StatutTransaction (name) VALUES ('Confirmé'), ('En attente'), ('Annulé');
+INSERT INTO StatutObjectif (name) VALUES ('En cours'), ('Abandonné'), ('Atteint');
+INSERT INTO TypeReport (name) VALUES ('Mensuel'), ('Prévisionnel');
+
+-- Utilisateurs
+INSERT INTO User (email, password, name, phone, birthdate)
+VALUES ('liam@example.com', 'hash123', 'Liam Santin', '0791234567', '1995-04-12');
+
+INSERT INTO Parameter (theme, langue, user_id)
+VALUES ('dark', 'fr', 1);
+
+-- Comptes et moyens de paiement
+INSERT INTO PaymentMethod (name) VALUES ('Cash'), ('Carte bancaire'), ('Virement');
+INSERT INTO Account (name, balance, type_account_id)
+VALUES ('Compte Principal', 2500.00, 1), ('Épargne Crypto', 1000.00, 3);
+
+-- Catégories / Budgets
+INSERT INTO Category (name, type_category_id) VALUES ('Transport', 1), ('Courses', 3);
+INSERT INTO Budget (name, max_amount, start_date, end_date, spent_amount, user_id)
+VALUES ('Budget Octobre', 2000.00, '2025-10-01', '2025-10-31', 0.00, 1);
+
+-- Transactions
+INSERT INTO Transaction (name, amount, description, user_id, budget_id, category_id, statut_transaction_id, type_transaction_id, payment_method_id, account_id)
+VALUES ('Achat essence', 80.00, 'Plein de carburant', 1, 1, 1, 1, 2, 2, 1),
+       ('Salaire', 3500.00, 'Revenu mensuel', 1, 1, NULL, 1, 1, 3, 1);
+
+-- Objectifs
+INSERT INTO Objectif (name, cible, progression, start_date, end_date, statut_objectif_id, user_id)
+VALUES ('Économiser 1000 CHF', 1000.00, 300.00, '2025-01-01', '2025-12-31', 1, 1);
+
+-- Notifications
+INSERT INTO Notification (type, message, related_id, is_read, budget_id)
+VALUES ('Budget', 'Vous avez dépassé 80% de votre budget', 1, FALSE, 1);
