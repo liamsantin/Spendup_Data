@@ -1030,7 +1030,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="294" parent="1" name="spendup">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-10-17.14:49:23</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-10-18.12:19:00</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </schema>
     <schema id="295" parent="1" name="sys">
@@ -2890,995 +2890,1010 @@ budget_id</ColNames>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="676" parent="329" name="name">
+    <column id="676" parent="329" name="category_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="677" parent="329" name="name">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="677" parent="329" name="max_amount">
-      <Position>4</Position>
+    <column id="678" parent="329" name="max_amount">
+      <Position>5</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="678" parent="329" name="start_date">
-      <Position>5</Position>
-      <StoredType>date|0s</StoredType>
-    </column>
-    <column id="679" parent="329" name="end_date">
+    <column id="679" parent="329" name="start_date">
       <Position>6</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="680" parent="329" name="spent_amount">
+    <column id="680" parent="329" name="end_date">
       <Position>7</Position>
+      <StoredType>date|0s</StoredType>
+    </column>
+    <column id="681" parent="329" name="spent_amount">
+      <Position>8</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="681" parent="329" name="created_at">
+    <column id="682" parent="329" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <Position>8</Position>
-      <StoredType>timestamp|0s</StoredType>
-    </column>
-    <column id="682" parent="329" name="updated_at">
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>9</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="683" parent="329" name="fk_budget_user">
+    <column id="683" parent="329" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>10</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <foreign-key id="684" parent="329" name="fk_budget_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="684" parent="329" name="PRIMARY">
+    <foreign-key id="685" parent="329" name="budget_ibfk_1">
+      <ColNames>category_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>category</RefTableName>
+    </foreign-key>
+    <index id="686" parent="329" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="685" parent="329" name="ix_budget_user">
+    <index id="687" parent="329" name="ix_budget_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="686" parent="329" name="PRIMARY">
+    <index id="688" parent="329" name="category_id">
+      <ColNames>category_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="689" parent="329" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="687" parent="330" name="id">
+    <column id="690" parent="330" name="id">
       <AutoIncrement>31</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="688" parent="330" name="type_category_id">
+    <column id="691" parent="330" name="type_category_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="689" parent="330" name="name">
+    <column id="692" parent="330" name="name">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="690" parent="330" name="created_at">
+    <column id="693" parent="330" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="691" parent="330" name="updated_at">
+    <column id="694" parent="330" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>5</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="692" parent="330" name="fk_category_type">
+    <foreign-key id="695" parent="330" name="fk_category_type">
       <ColNames>type_category_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>typecategory</RefTableName>
     </foreign-key>
-    <index id="693" parent="330" name="PRIMARY">
+    <index id="696" parent="330" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="694" parent="330" name="fk_category_type">
+    <index id="697" parent="330" name="fk_category_type">
       <ColNames>type_category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="695" parent="330" name="PRIMARY">
+    <key id="698" parent="330" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="696" parent="331" name="id">
+    <column id="699" parent="331" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="697" parent="331" name="user_id">
+    <column id="700" parent="331" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="698" parent="331" name="type">
+    <column id="701" parent="331" name="type">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="699" parent="331" name="message">
+    <column id="702" parent="331" name="message">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="700" parent="331" name="related_id">
+    <column id="703" parent="331" name="related_id">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="701" parent="331" name="is_read">
+    <column id="704" parent="331" name="is_read">
       <DefaultExpression>0</DefaultExpression>
       <Position>6</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <column id="702" parent="331" name="budget_id">
+    <column id="705" parent="331" name="budget_id">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="703" parent="331" name="objectif_id">
+    <column id="706" parent="331" name="objectif_id">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="704" parent="331" name="transaction_id">
+    <column id="707" parent="331" name="transaction_id">
       <Position>9</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="705" parent="331" name="created_at">
+    <column id="708" parent="331" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>10</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="706" parent="331" name="updated_at">
+    <column id="709" parent="331" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>11</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="707" parent="331" name="fk_notif_user">
+    <foreign-key id="710" parent="331" name="fk_notif_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="708" parent="331" name="fk_notif_budget">
+    <foreign-key id="711" parent="331" name="fk_notif_budget">
       <ColNames>budget_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>budget</RefTableName>
     </foreign-key>
-    <foreign-key id="709" parent="331" name="fk_notif_objectif">
+    <foreign-key id="712" parent="331" name="fk_notif_objectif">
       <ColNames>objectif_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>objectif</RefTableName>
     </foreign-key>
-    <foreign-key id="710" parent="331" name="fk_notif_transaction">
+    <foreign-key id="713" parent="331" name="notification_ibfk_1">
       <ColNames>transaction_id</ColNames>
+      <OnDelete>cascade</OnDelete>
       <RefColNames>id</RefColNames>
       <RefTableName>transaction</RefTableName>
     </foreign-key>
-    <index id="711" parent="331" name="PRIMARY">
+    <index id="714" parent="331" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="712" parent="331" name="fk_notif_user">
+    <index id="715" parent="331" name="fk_notif_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="713" parent="331" name="fk_notif_budget">
+    <index id="716" parent="331" name="fk_notif_budget">
       <ColNames>budget_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="714" parent="331" name="fk_notif_objectif">
+    <index id="717" parent="331" name="fk_notif_objectif">
       <ColNames>objectif_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="715" parent="331" name="fk_notif_transaction">
+    <index id="718" parent="331" name="transaction_id">
       <ColNames>transaction_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="716" parent="331" name="PRIMARY">
+    <key id="719" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="717" parent="332" name="id">
+    <column id="720" parent="332" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="718" parent="332" name="user_id">
+    <column id="721" parent="332" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="719" parent="332" name="statut_objectif_id">
+    <column id="722" parent="332" name="statut_objectif_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="720" parent="332" name="name">
+    <column id="723" parent="332" name="name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="721" parent="332" name="cible">
+    <column id="724" parent="332" name="cible">
       <Position>5</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="722" parent="332" name="progression">
+    <column id="725" parent="332" name="progression">
       <Position>6</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="723" parent="332" name="start_date">
+    <column id="726" parent="332" name="start_date">
       <Position>7</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="724" parent="332" name="end_date">
+    <column id="727" parent="332" name="end_date">
       <Position>8</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="725" parent="332" name="created_at">
+    <column id="728" parent="332" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>9</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="726" parent="332" name="updated_at">
+    <column id="729" parent="332" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>10</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="727" parent="332" name="fk_objectif_user">
+    <foreign-key id="730" parent="332" name="fk_objectif_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="728" parent="332" name="fk_objectif_status">
+    <foreign-key id="731" parent="332" name="fk_objectif_status">
       <ColNames>statut_objectif_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>statutobjectif</RefTableName>
     </foreign-key>
-    <index id="729" parent="332" name="PRIMARY">
+    <index id="732" parent="332" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="730" parent="332" name="ix_objectif_user">
+    <index id="733" parent="332" name="ix_objectif_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="731" parent="332" name="fk_objectif_status">
+    <index id="734" parent="332" name="fk_objectif_status">
       <ColNames>statut_objectif_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="732" parent="332" name="PRIMARY">
+    <key id="735" parent="332" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="733" parent="333" name="id">
+    <column id="736" parent="333" name="id">
       <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="734" parent="333" name="theme">
+    <column id="737" parent="333" name="theme">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="735" parent="333" name="langue">
+    <column id="738" parent="333" name="langue">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(10)|0s</StoredType>
     </column>
-    <column id="736" parent="333" name="user_id">
+    <column id="739" parent="333" name="user_id">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="737" parent="333" name="created_at">
+    <column id="740" parent="333" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="738" parent="333" name="updated_at">
+    <column id="741" parent="333" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>6</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="739" parent="333" name="fk_parameter_user">
+    <foreign-key id="742" parent="333" name="fk_parameter_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="740" parent="333" name="PRIMARY">
+    <index id="743" parent="333" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="741" parent="333" name="user_id">
+    <index id="744" parent="333" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="742" parent="333" name="PRIMARY">
+    <key id="745" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="743" parent="333" name="user_id">
+    <key id="746" parent="333" name="user_id">
       <UnderlyingIndexName>user_id</UnderlyingIndexName>
     </key>
-    <column id="744" parent="334" name="id">
+    <column id="747" parent="334" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="745" parent="334" name="name">
+    <column id="748" parent="334" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="746" parent="334" name="created_at">
+    <column id="749" parent="334" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="747" parent="334" name="updated_at">
+    <column id="750" parent="334" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="748" parent="334" name="PRIMARY">
+    <index id="751" parent="334" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="749" parent="334" name="PRIMARY">
+    <key id="752" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="750" parent="335" name="id">
+    <column id="753" parent="335" name="id">
       <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="751" parent="335" name="user_id">
+    <column id="754" parent="335" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="752" parent="335" name="type_property_id">
+    <column id="755" parent="335" name="type_property_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="753" parent="335" name="name">
+    <column id="756" parent="335" name="name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="754" parent="335" name="description">
+    <column id="757" parent="335" name="description">
       <Position>5</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="755" parent="335" name="valeur_achat">
+    <column id="758" parent="335" name="valeur_achat">
       <Position>6</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="756" parent="335" name="valeur_actuelle">
+    <column id="759" parent="335" name="valeur_actuelle">
       <Position>7</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="757" parent="335" name="date_acquisition">
+    <column id="760" parent="335" name="date_acquisition">
       <Position>8</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="758" parent="335" name="date_estimation">
+    <column id="761" parent="335" name="date_estimation">
       <Position>9</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="759" parent="335" name="revenu_annuel">
+    <column id="762" parent="335" name="revenu_annuel">
       <Position>10</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="760" parent="335" name="cout_annuel">
+    <column id="763" parent="335" name="cout_annuel">
       <Position>11</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="761" parent="335" name="created_at">
+    <column id="764" parent="335" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>12</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="762" parent="335" name="updated_at">
+    <column id="765" parent="335" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>13</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="763" parent="335" name="fk_property_user">
+    <foreign-key id="766" parent="335" name="fk_property_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="764" parent="335" name="fk_property_type">
+    <foreign-key id="767" parent="335" name="fk_property_type">
       <ColNames>type_property_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>typeproperty</RefTableName>
     </foreign-key>
-    <index id="765" parent="335" name="PRIMARY">
+    <index id="768" parent="335" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="766" parent="335" name="ix_property_user">
+    <index id="769" parent="335" name="ix_property_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="767" parent="335" name="fk_property_type">
+    <index id="770" parent="335" name="fk_property_type">
       <ColNames>type_property_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="768" parent="335" name="PRIMARY">
+    <key id="771" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="769" parent="336" name="id">
+    <column id="772" parent="336" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="770" parent="336" name="name">
+    <column id="773" parent="336" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="771" parent="336" name="intervale">
+    <column id="774" parent="336" name="intervale">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="772" parent="336" name="nextDate">
+    <column id="775" parent="336" name="nextDate">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="773" parent="336" name="created_at">
+    <column id="776" parent="336" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="774" parent="336" name="updated_at">
+    <column id="777" parent="336" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>6</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="775" parent="336" name="PRIMARY">
+    <index id="778" parent="336" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="776" parent="336" name="PRIMARY">
+    <key id="779" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="777" parent="337" name="id">
+    <column id="780" parent="337" name="id">
       <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="778" parent="337" name="user_id">
+    <column id="781" parent="337" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="779" parent="337" name="type_report_id">
+    <column id="782" parent="337" name="type_report_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="780" parent="337" name="start_date">
+    <column id="783" parent="337" name="start_date">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="781" parent="337" name="end_date">
+    <column id="784" parent="337" name="end_date">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="782" parent="337" name="data">
+    <column id="785" parent="337" name="data">
       <Position>6</Position>
       <StoredType>json|0s</StoredType>
     </column>
-    <column id="783" parent="337" name="created_at">
+    <column id="786" parent="337" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>7</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="784" parent="337" name="updated_at">
+    <column id="787" parent="337" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>8</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="785" parent="337" name="fk_report_user">
+    <foreign-key id="788" parent="337" name="fk_report_user">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="786" parent="337" name="fk_report_type">
+    <foreign-key id="789" parent="337" name="fk_report_type">
       <ColNames>type_report_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>typereport</RefTableName>
     </foreign-key>
-    <index id="787" parent="337" name="PRIMARY">
+    <index id="790" parent="337" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="788" parent="337" name="fk_report_user">
+    <index id="791" parent="337" name="fk_report_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="789" parent="337" name="fk_report_type">
+    <index id="792" parent="337" name="fk_report_type">
       <ColNames>type_report_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="790" parent="337" name="PRIMARY">
+    <key id="793" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="791" parent="338" name="id">
+    <column id="794" parent="338" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="792" parent="338" name="name">
+    <column id="795" parent="338" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="793" parent="338" name="created_at">
+    <column id="796" parent="338" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="794" parent="338" name="updated_at">
+    <column id="797" parent="338" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="795" parent="338" name="PRIMARY">
+    <index id="798" parent="338" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="796" parent="338" name="PRIMARY">
+    <key id="799" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="797" parent="339" name="id">
+    <column id="800" parent="339" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="798" parent="339" name="name">
+    <column id="801" parent="339" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="799" parent="339" name="created_at">
+    <column id="802" parent="339" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="800" parent="339" name="updated_at">
+    <column id="803" parent="339" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="801" parent="339" name="PRIMARY">
+    <index id="804" parent="339" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="802" parent="339" name="PRIMARY">
+    <key id="805" parent="339" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="803" parent="340" name="id">
+    <column id="806" parent="340" name="id">
       <AutoIncrement>9</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="804" parent="340" name="account_id">
+    <column id="807" parent="340" name="account_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="805" parent="340" name="type_transaction_id">
+    <column id="808" parent="340" name="type_transaction_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="806" parent="340" name="amount">
+    <column id="809" parent="340" name="amount">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>decimal(10,2 digit)|0s</StoredType>
     </column>
-    <column id="807" parent="340" name="description">
+    <column id="810" parent="340" name="description">
       <Position>5</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="808" parent="340" name="statut_transaction_id">
+    <column id="811" parent="340" name="statut_transaction_id">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="809" parent="340" name="budget_id">
+    <column id="812" parent="340" name="budget_id">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="810" parent="340" name="objectif_id">
+    <column id="813" parent="340" name="objectif_id">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="811" parent="340" name="property_id">
+    <column id="814" parent="340" name="property_id">
       <Position>9</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="812" parent="340" name="category_id">
+    <column id="815" parent="340" name="category_id">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="813" parent="340" name="payment_method_id">
+    <column id="816" parent="340" name="payment_method_id">
       <Position>11</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="814" parent="340" name="recurrence_transaction_id">
+    <column id="817" parent="340" name="recurrence_transaction_id">
       <Position>12</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="815" parent="340" name="created_at">
+    <column id="818" parent="340" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>13</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="816" parent="340" name="updated_at">
+    <column id="819" parent="340" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>14</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <foreign-key id="817" parent="340" name="fk_trx_account">
+    <foreign-key id="820" parent="340" name="transaction_ibfk_1">
       <ColNames>account_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>account</RefTableName>
     </foreign-key>
-    <foreign-key id="818" parent="340" name="fk_trx_ttype">
+    <foreign-key id="821" parent="340" name="fk_trx_ttype">
       <ColNames>type_transaction_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>typetransaction</RefTableName>
     </foreign-key>
-    <foreign-key id="819" parent="340" name="fk_trx_status">
+    <foreign-key id="822" parent="340" name="fk_trx_status">
       <ColNames>statut_transaction_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>statuttransaction</RefTableName>
     </foreign-key>
-    <foreign-key id="820" parent="340" name="fk_trx_budget">
+    <foreign-key id="823" parent="340" name="fk_trx_budget">
       <ColNames>budget_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>budget</RefTableName>
     </foreign-key>
-    <foreign-key id="821" parent="340" name="transaction_ibfk_1">
+    <foreign-key id="824" parent="340" name="transaction_ibfk_2">
       <ColNames>property_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>property</RefTableName>
     </foreign-key>
-    <foreign-key id="822" parent="340" name="fk_trx_category">
+    <foreign-key id="825" parent="340" name="fk_trx_category">
       <ColNames>category_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>category</RefTableName>
     </foreign-key>
-    <foreign-key id="823" parent="340" name="fk_trx_pmethod">
+    <foreign-key id="826" parent="340" name="fk_trx_pmethod">
       <ColNames>payment_method_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>paymentmethod</RefTableName>
     </foreign-key>
-    <foreign-key id="824" parent="340" name="fk_trx_recur">
+    <foreign-key id="827" parent="340" name="fk_trx_recur">
       <ColNames>recurrence_transaction_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>recurrenttransaction</RefTableName>
     </foreign-key>
-    <index id="825" parent="340" name="PRIMARY">
+    <index id="828" parent="340" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="826" parent="340" name="ix_trx_account">
+    <index id="829" parent="340" name="ix_trx_account">
       <ColNames>account_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="827" parent="340" name="fk_trx_ttype">
+    <index id="830" parent="340" name="fk_trx_ttype">
       <ColNames>type_transaction_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="828" parent="340" name="fk_trx_status">
+    <index id="831" parent="340" name="fk_trx_status">
       <ColNames>statut_transaction_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="829" parent="340" name="ix_trx_budget">
+    <index id="832" parent="340" name="ix_trx_budget">
       <ColNames>budget_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="830" parent="340" name="property_id">
+    <index id="833" parent="340" name="property_id">
       <ColNames>property_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="831" parent="340" name="ix_trx_category">
+    <index id="834" parent="340" name="ix_trx_category">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="832" parent="340" name="fk_trx_pmethod">
+    <index id="835" parent="340" name="fk_trx_pmethod">
       <ColNames>payment_method_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="833" parent="340" name="fk_trx_recur">
+    <index id="836" parent="340" name="fk_trx_recur">
       <ColNames>recurrence_transaction_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="834" parent="340" name="ix_trx_created">
+    <index id="837" parent="340" name="ix_trx_created">
       <ColNames>created_at</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="835" parent="340" name="PRIMARY">
+    <key id="838" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="836" parent="341" name="id">
+    <column id="839" parent="341" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="837" parent="341" name="name">
+    <column id="840" parent="341" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="838" parent="341" name="created_at">
+    <column id="841" parent="341" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="839" parent="341" name="updated_at">
+    <column id="842" parent="341" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="840" parent="341" name="PRIMARY">
+    <index id="843" parent="341" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="841" parent="341" name="PRIMARY">
+    <key id="844" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="842" parent="342" name="id">
+    <column id="845" parent="342" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="843" parent="342" name="name">
+    <column id="846" parent="342" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="844" parent="342" name="created_at">
+    <column id="847" parent="342" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="845" parent="342" name="updated_at">
+    <column id="848" parent="342" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="846" parent="342" name="PRIMARY">
+    <index id="849" parent="342" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="847" parent="342" name="PRIMARY">
+    <key id="850" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="848" parent="343" name="id">
+    <column id="851" parent="343" name="id">
       <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="849" parent="343" name="name">
+    <column id="852" parent="343" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="850" parent="343" name="created_at">
+    <column id="853" parent="343" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="851" parent="343" name="updated_at">
+    <column id="854" parent="343" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="852" parent="343" name="PRIMARY">
+    <index id="855" parent="343" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="853" parent="343" name="PRIMARY">
+    <key id="856" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="854" parent="344" name="id">
+    <column id="857" parent="344" name="id">
       <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="855" parent="344" name="name">
+    <column id="858" parent="344" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="856" parent="344" name="created_at">
+    <column id="859" parent="344" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="857" parent="344" name="updated_at">
+    <column id="860" parent="344" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="858" parent="344" name="PRIMARY">
+    <index id="861" parent="344" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="859" parent="344" name="PRIMARY">
+    <key id="862" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="860" parent="345" name="id">
+    <column id="863" parent="345" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="861" parent="345" name="name">
+    <column id="864" parent="345" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="862" parent="345" name="created_at">
+    <column id="865" parent="345" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="863" parent="345" name="updated_at">
+    <column id="866" parent="345" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>4</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="864" parent="345" name="PRIMARY">
+    <index id="867" parent="345" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="865" parent="345" name="PRIMARY">
+    <key id="868" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="866" parent="346" name="id">
+    <column id="869" parent="346" name="id">
       <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="867" parent="346" name="email">
+    <column id="870" parent="346" name="email">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="868" parent="346" name="password">
+    <column id="871" parent="346" name="password">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="869" parent="346" name="name">
+    <column id="872" parent="346" name="name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="870" parent="346" name="phone">
+    <column id="873" parent="346" name="phone">
       <Position>5</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="871" parent="346" name="birthdate">
+    <column id="874" parent="346" name="birthdate">
       <Position>6</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="872" parent="346" name="created_at">
+    <column id="875" parent="346" name="created_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>7</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="873" parent="346" name="updated_at">
+    <column id="876" parent="346" name="updated_at">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>8</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="874" parent="346" name="PRIMARY">
+    <index id="877" parent="346" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="875" parent="346" name="email">
+    <index id="878" parent="346" name="email">
       <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="876" parent="346" name="PRIMARY">
+    <key id="879" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="877" parent="346" name="email">
+    <key id="880" parent="346" name="email">
       <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
   </database-model>

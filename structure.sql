@@ -123,6 +123,7 @@ CREATE TABLE Category (
 CREATE TABLE Budget (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
+  category_id INT NOT NULL,
   name VARCHAR(100) NOT NULL,
   max_amount DECIMAL(10,2),
   start_date DATE,
@@ -130,7 +131,8 @@ CREATE TABLE Budget (
   spent_amount DECIMAL(10,2),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT fk_budget_user FOREIGN KEY (user_id) REFERENCES User(id)
+  CONSTRAINT fk_budget_user FOREIGN KEY (user_id) REFERENCES User(id),
+  FOREIGN KEY (category_id) REFERENCES Category(id)
 );
 
 -- =========
@@ -232,7 +234,7 @@ CREATE TABLE Transaction (
   recurrence_transaction_id INT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT fk_trx_account FOREIGN KEY (account_id) REFERENCES Account(id),
+  FOREIGN KEY (account_id) REFERENCES Account(id),
   CONSTRAINT fk_trx_ttype FOREIGN KEY (type_transaction_id) REFERENCES TypeTransaction(id),
   CONSTRAINT fk_trx_status FOREIGN KEY (statut_transaction_id) REFERENCES StatutTransaction(id),
   CONSTRAINT fk_trx_budget FOREIGN KEY (budget_id) REFERENCES Budget(id),
@@ -241,6 +243,8 @@ CREATE TABLE Transaction (
   CONSTRAINT fk_trx_recur FOREIGN KEY (recurrence_transaction_id) REFERENCES RecurrentTransaction(id),
   FOREIGN KEY (property_id) REFERENCES Property(id)
 );
+
+delete from Transaction WHERE account_id = 1;
 
 -- ============
 -- Notification
@@ -261,7 +265,7 @@ CREATE TABLE Notification (
   CONSTRAINT fk_notif_user FOREIGN KEY (user_id) REFERENCES User(id),
   CONSTRAINT fk_notif_budget FOREIGN KEY (budget_id) REFERENCES Budget(id),
   CONSTRAINT fk_notif_objectif FOREIGN KEY (objectif_id) REFERENCES Objectif(id),
-  CONSTRAINT fk_notif_transaction FOREIGN KEY (transaction_id) REFERENCES Transaction(id)
+  FOREIGN KEY (transaction_id) REFERENCES Transaction(id) ON DELETE CASCADE
 );
 
 -- =========================
@@ -392,10 +396,10 @@ VALUES
 -- ========================================
 -- BUDGETS
 -- ========================================
-INSERT INTO Budget (user_id, name, max_amount, start_date, end_date, spent_amount)
+INSERT INTO Budget (user_id, category_id,name, max_amount, start_date, end_date, spent_amount)
 VALUES
-(1, 'Budget Octobre', 2000.00, '2025-10-01', '2025-10-31', 350.00),
-(1, 'Budget Vacances Été', 3000.00, '2025-07-01', '2025-08-31', 1200.00);
+(1,2, 'Budget Octobre', 2000.00, '2025-10-01', '2025-10-31', 350.00),
+(1, 2,'Budget Vacances Été', 3000.00, '2025-07-01', '2025-08-31', 1200.00);
 
 -- ========================================
 -- OBJECTIFS

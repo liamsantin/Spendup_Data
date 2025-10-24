@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="new views">
+    <list default="true" id="1377c3bc-3587-4973-8c18-5f034ce6a135" name="Changes" comment="update constraint on transaction for property">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aeac60e-e6d2-4dde-bf5d-079ccf70ec25/storage_v2/_src_/schema/spendup.eTBOiA.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/structure.sql" afterDir="false" />
     </list>
@@ -32,20 +30,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/lsant"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lsant&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\_DEV\_DATA\Spendup\Procedures" />
@@ -75,6 +73,7 @@
     <MESSAGE value="new views and new routines" />
     <MESSAGE value="update insert" />
     <MESSAGE value="new views" />
-    <option name="LAST_COMMIT_MESSAGE" value="new views" />
+    <MESSAGE value="update constraint on transaction for property" />
+    <option name="LAST_COMMIT_MESSAGE" value="update constraint on transaction for property" />
   </component>
 </project>
